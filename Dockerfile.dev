@@ -1,0 +1,15 @@
+# Create image based on the official Node image from dockerhub
+FROM node:lts-buster-slim
+
+# Create app directory
+WORKDIR '/app'
+
+# Copy dependency definitions   
+COPY package.json .
+RUN npm install
+
+# Get all the code needed to run the app
+COPY . .
+
+
+CMD ["npm", "run", "start"]
